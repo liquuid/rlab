@@ -11,3 +11,21 @@ vendas_loja <-data.frame(
 )
 
 print(vendas_loja)
+
+valores_ausentes <- colSums(is.na(vendas_loja))
+
+print(valores_ausentes)
+
+media_quantidade <- vendas_loja %>% 
+  summarize(media_quantidade = mean(quantidade, na.rm = TRUE))
+print(media_quantidade)
+
+vendas_com_valor_total <- vendas_loja %>%
+  mutate(valor_total = quantidade * receita)
+
+print(vendas_com_valor_total)
+
+
+colunas_selecionadas <- vendas_loja %>%
+  select(data_venda, produto)
+print(colunas_selecionadas)
